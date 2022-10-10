@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+
+    position: relative;
+    margin-top: 5vh;
+
+    background-color: #000022;
+}
+#canvas{ 
+    margin-top: 40px;
+    border-color: white;
+    border-style: solid;
+    border-width: 2.5px;
+}
