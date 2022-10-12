@@ -1,12 +1,13 @@
+* {
+    color: aliceblue;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 25px;
+}
 body{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
-    color: aliceblue;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 25px;
 
     position: relative;
     margin-top: 5vh;

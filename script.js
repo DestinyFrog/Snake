@@ -80,6 +80,25 @@ apple = {
         context.arc((this.x*unit)+unit/2,(this.y*unit)+unit/2,unit/2,0,Math.PI*2);
         context.fill();
     },
+    update: function(){
+        if(apple.x == snake.bodyParty[0].x && apple.y == snake.bodyParty[0].y){
+            snake.grow();
+            this.move();
+        }
+        this.check();
+    },
+    check: function(){
+        snake.bodyParty.map((obj) => {
+            let pos = {x: obj.x, y: obj.y};
+            if(pos.x == this.x && pos.y == this.y){
+                this.move();
+            }
+        });
+    },
+    move: function(){
+        apple.x = Math.floor(Math.random() * width/unit);
+        apple.y = Math.floor(Math.random() * height/unit);
+    },
     x: width/unit /2,
     y: height/unit /2
 }
@@ -103,16 +122,7 @@ function load(){
     loop();
 }
 function update(){
-    if(apple.x == snake.bodyParty[0].x && apple.y == snake.bodyParty[0].y){
-        snake.grow();
-
-        apple.x = Math.floor(Math.random() * width/unit);
-        apple.y = Math.floor(Math.random() * height/unit);
-        while(isOnApple() == true){
-            apple.x = Math.floor(Math.random() * width/unit);
-            apple.y = Math.floor(Math.random() * height/unit);
-        }
-    }
+    apple.update();
     snake.update();
 }
 function draw(){
@@ -157,19 +167,10 @@ function lose(){
 
     context.fillStyle = '#ffffff';
     context.textAlign = 'center';
-    context.font = "15px Courier";
+    context.font = "18px Courier";
     context.fillText('aperte "Enter" para reiniciar',width/2,height/4);
     context.drawImage(deadSnake, width/2 - 120/2, height/2 - 120/2);
     INGAME = false; 
-}
-function isOnApple(){
-    snake.bodyParty.map(p => {
-        // console.log('['+apple.x+']: '+p.x+'; ['+apple.y+']: '+p.y);
-        if(p.x == apple.x && p.y == apple.y){
-            return true;
-        }
-    });
-    return false;
 }
 
 function loop(){
